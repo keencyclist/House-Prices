@@ -1,18 +1,15 @@
-# Project 2 - Ames Housing Data and Kaggle Challenge
+# Hedonic Model of Housing Prices
 
-Paul Schimek, March 25, 2019
 
 ## Overview
 
-This project uses the Ames Housing Dataset to create a regression model that estimates housing sales price. 
-The Ames Housing Dataset is an extract of residential property sales prices combined with housing size, 
-quality, condition, and type data from the Ames property assesor, for sales between 2006 and 2010. Therere are 81 columns in the dataset. The training dataset has 2,081 observations and the test dataset has 789 observations. (The target variable, SalePrice, was excluded from the test data.) A [description of the data](http://jse.amstat.org/v19n3/decock/DataDocumentation.txt) is available.
+This project uses the Ames Housing Dataset to create a statistical model that estimates housing sales price based on hedonic attributes of the property: that is, attributes that are desired and create value. The Ames Housing Dataset is an extract of residential property sales prices combined with housing size, quality, condition, and type data from the Ames property assesor, for sales between 2006 and 2010. Therere are 81 columns in the dataset. The training dataset has 2,081 observations and the test dataset has 789 observations. (The target variable, SalePrice, was excluded from the test data.) A [description of the data](http://jse.amstat.org/v19n3/decock/DataDocumentation.txt) is available.
 
 
 ## Problem Statement
-There are two related goals of this exercise. The first is to build a model that accurately predicts house sales prices in Ames, at least in the testing data. This was measured in part by the Kaggle competition. The second was to create a model using features that are understandable and provide insight into the attributes and features that affect housing prices. In addition to providing usable inferences (e.g., how much people value central air, for example), a model built on features that are based on the analyst's knowledge of the relationships under study may be more robust than a black box model that is principally designed to fit the existing data. This may be more visible when one expands the testing data, such as to other time periods.
+There are two related goals of this exercise. The first is to build a model that accurately predicts house sales prices in Ames, at least in the testing data. This was measured in part by the Kaggle competition. The second was to create a model using features that are understandable and provide insight into the attributes and features that affect housing prices. In addition to providing usable inferences (e.g., how much people value central air, for example), a model built on features that are based on the analyst's knowledge of the relationships under study may be more robust than a model that is principally designed to fit the existing data. This may be more visible when one expands the testing data, such as data for other time periods.
 
-## Exploratory Data Analysis
+## Exploratory Data Analysis (EDA)
 
 My main goal in EDA was to look for features that seemed to have an impact on the target variable, SalePrice (housing sale price). I did not adjust SalePrice for the Consumer Price Index because price inflation was low during these years (2006-2010) and it was thus unlikely to make much difference. For continuous variables such as measures of living area, lot size, and frontage, I plotted the potential feature against SalePrice. This also allowed me to identify outliers, irregularlities in the data, and possible non-linear relationships.
 
@@ -116,13 +113,11 @@ I also looked at the year in which the house was sold. There was an average decr
 
 ## Conclusions
 There were numerous technical items I learned from this project:
-  - how to use functions as part of my variable transformations
+  - how to use functions as part of variable transformations
   - how to impute missing values using a regression model
-  - how to 'pickle' model results and lists for use in other notebooks (later I will figure out how to create modules so I can reuse functions)
+  - how to 'pickle' model results for use in other notebooks 
   - how to create graphs of regression coefficients using Matplotlib
   - how to optimize models via scaling, polynomials/interactions, and regularization.
-  
-  
-Others developed models with lower RMSE on the test data, and I am curious to see what techniques they used. I wonder, though, if more 'optimized' models are more transferable to test datasets that are not very similar to the training data (e.g., not randomly sampled from the total data available). 
+ 
 
-I think the 'business' conclusions about locations, amenities, quality, and other attributes that users value are interesting, but many may be specific to the time and place of the Ames data. An even richer dataset, with tens of thousands of observations, would provide even more information to tease apart the attributes of housing that are valued, even though many of them are observed together. In that way it might also provide a more generalizable model.
+The conclusions about locations, amenities, quality, and other attributes that users value are interesting, but many may be specific to the time and place of the Ames data. An even richer dataset, with tens of thousands of observations, would provide even more information to tease apart the attributes of housing that are valued, even though many of them are observed together. In that way it might also provide a more generalizable model.
